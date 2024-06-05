@@ -1,2 +1,4 @@
 apache_package: apache2
 apache_service: apache2
+passwd_auth: "yes"
+ssh_template_file: sshd_config_ubuntu.j2
