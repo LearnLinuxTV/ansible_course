@@ -1,0 +1,20 @@
+- name: create user
+  tags: always
+  ansible.builtin.user:
+    name: simone
+    groups: root
+
+- name: add sudoers file for simone
+  tags: always
+  ansible.builtin.copy:
+    src: sudoer_simone
+    dest: /etc/sudoers.d/simone
+    owner: root
+    group: root
+    mode: 0440
+
+- name: add ssh key for simone user
+  tags: always
+  ansible.builtin.authorized_key:
+    user: simone
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO8n5T6LxtzJZEE1pSx0juPMiIDjtM6K0r3gnN+w8iTY jay@ansible-ws.home-network.io"
